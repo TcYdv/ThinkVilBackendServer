@@ -1,9 +1,13 @@
 package com.Twitter.Jarvis.Controller;
 
 import com.Twitter.Jarvis.Model.OrderEntityModel;
+import com.Twitter.Jarvis.Model.PaymentModel;
 import com.Twitter.Jarvis.Service.RazorPayService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/payment")
@@ -12,20 +16,24 @@ public class PaymentController {
     @Autowired
     private RazorPayService razorpayService;
 
+//    @Autowired
+//    private RazorPayService raz
+
     @PostMapping("/create-order")
-    public OrderEntityModel createOrder(@RequestParam int amount) {
+    OrderEntityModel createOrder(@RequestBody Map<String, Integer> data) {
         try {
-            return razorpayService.createOrder(amount);
+            return razorpayService.createOrder(data);
         } catch (Exception e) {
             throw new RuntimeException("Order creation failed: " + e.getMessage());
         }
     }
 
     @PostMapping("/verify-payment")
-    public String verifyPayment(@RequestParam String razorpayOrderId,
-                                @RequestParam String razorpayPaymentId,
-                                @RequestParam String razorpaySignature) {
-        // Verification logic to be implemented here
-        return "Payment verification feature under construction.";
+    public String verifyPayment(@RequestBody Map<String, Object> data) {
+        try {
+            return razorpayService.verifyPayment(data);
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
 }
