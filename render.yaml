@@ -1,0 +1,15 @@
+services:
+  - name: Jarvis
+    type: web
+    runtime: docker
+    repo: https://github.com/Sunil9882/ThinkVilBackendServer.git
+    region: oregon  # Choose your region
+    plan: free  # Or use a paid plan
+    envVars:
+      - key: DB_URL
+        value: jdbc:postgresql://mydatabase.c5wiooq4o8yu.ap-south-1.rds.amazonaws.com:5432/postgres
+      - key: DB_USERNAME
+        value: postgres
+      - key: DB_PASSWORD
+        value: localhost
+    autoDeploy: true
