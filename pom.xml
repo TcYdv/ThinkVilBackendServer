@@ -95,8 +95,13 @@
 			<artifactId>razorpay-java</artifactId>
 			<version>1.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>dotenv-java</artifactId>
+			<version>2.2.0</version>
+		</dependency>
 
-<!--		<dependencies>-->
+		<!--		<dependencies>-->
 			<!-- Springfox Swagger dependencies -->
 			<dependency>
 				<groupId>io.springfox</groupId>
