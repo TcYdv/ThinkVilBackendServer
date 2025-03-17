@@ -45,7 +45,7 @@ public class AppConfig {
                 @Override
                 public CorsConfiguration getCorsConfiguration(HttpServletRequest request){
                     CorsConfiguration cfg = new CorsConfiguration();
-                    cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+                    cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://v0-smart-agriculture-platform.vercel.app"));
                     cfg.setAllowedMethods(Collections.singletonList("*"));
                     cfg.setAllowCredentials(true);
                     cfg.setAllowedHeaders(Collections.singletonList("*"));
