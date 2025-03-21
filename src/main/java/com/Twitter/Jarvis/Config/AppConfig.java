@@ -1,6 +1,7 @@
 package com.Twitter.Jarvis.Config;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,6 +21,9 @@ import java.util.Collections;
 @Configuration
 @EnableWebSecurity
 public class AppConfig {
+
+    @Value("${frontend.url}")
+    private String frontendURL;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -45,7 +49,7 @@ public class AppConfig {
                 @Override
                 public CorsConfiguration getCorsConfiguration(HttpServletRequest request){
                     CorsConfiguration cfg = new CorsConfiguration();
-                    cfg.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://v0-smart-agriculture-platform.vercel.app", "https://v0-smart-agricu-git-4cb88e-tarachandyadav018-gmailcoms-projects.vercel.app", "https://v0-smart-agriculture-platform-k0pojipi0.vercel.app", "https://v0-smart-agriculture-platf-tarachandyadav018-gmailcoms-projects.vercel.app", "https://v0-smart-agriculture-platform.vercel.app/jarvis-production-1e68.up.railway.app","https://v0-smart-agriculture-platform-fv24x0qzu.vercel.app/*"));
+                    cfg.setAllowedOrigins(Arrays.asList(frontendURL));
                     cfg.setAllowedMethods(Collections.singletonList("*"));
                     cfg.setAllowCredentials(true);
                     cfg.setAllowedHeaders(Collections.singletonList("*"));
